@@ -6,14 +6,17 @@ import Feed from './containers/feed';
 class App extends Component {
   render() {
     return (
-      <div className='App'>
-        <div id='header'>
+      <div className="App">
+        <div id="header">
           <h1> Snipshots </h1>
+          <button>Switch Mode</button>
+          <p></p>
         </div>
         <Feed />
-        <div id='footer'>
+        <div id="footer">
           <h3>Snipshots</h3>
           <p>By Dan, Joe, Julien, Kris and Paul</p>
+          <p>Iterated by Callum, Jon, Keisha and Kris</p>
         </div>
       </div>
     );

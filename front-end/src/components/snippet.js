@@ -46,6 +46,63 @@ const Snippet = ({ toOverview }) => {
   }
 
   const { title, code, tags, description } = snippet;
+  //NOTE: connect these bttn to backend functionality\
+  //function to update snippet description
+  const updateSnippetDescription = async () => {
+    try {
+      const response = await fetch('/description', {
+        method: 'PATCH',
+        body: JSON.stringify({ snipId: string, updatedDescription: string }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+      } else {
+        console.error(
+          'Error updating the description of this snippet:',
+          response.status
+        );
+      }
+    } catch (error) {
+      console.error('Error updating the description of this snippet:', error);
+    }
+  };
+
+  //function to update snippet title
+  const updateSnippetTitle = async () => {
+    try {
+      const response = await fetch('/title', {
+        method: 'PATCH',
+        body: JSON.stringify({ snipId: string, updatedTitle: string }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+      } else {
+        console.error(
+          'Error updating the title of the snippet:',
+          response.status
+        );
+      }
+    } catch (error) {
+      console.error('Error updating the title of the snippet:', error);
+    }
+  };
+
+  //function to delete snippet
+  const deleteSnippet = async () => {
+    try {
+      const response = await fetch('/', {
+        method: 'DELETE',
+        body: JSON.stringify({ snipId: string }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+      } else {
+        console.error('Error deleting snippet:', response.status);
+      }
+    } catch (error) {
+      console.error('Error deleting snippet data:', error);
+    }
+  };
 
   return (
     <div id="snippet">
@@ -67,6 +124,35 @@ const Snippet = ({ toOverview }) => {
       </SyntaxHighlighter>
       <p>Tags: {tags.join(', ')}</p>
       <p>Description: {description}</p>
+      <div style={{ display: 'flex' }}>
+        <button
+          className="changeButton"
+          onClick={updateSnippetTitle}
+          style={{
+            marginLeft: 'auto',
+          }}
+        >
+          Update Title
+        </button>
+        <button
+          className="changeButton"
+          onClick={deleteSnippet}
+          style={{
+            marginCenter: 'auto',
+          }}
+        >
+          Delete
+        </button>
+        <button
+          className="changeButton"
+          onClick={updateSnippetDescription}
+          style={{
+            marginRight: 'auto',
+          }}
+        >
+          Update Description
+        </button>
+      </div>
     </div>
   );
 };
