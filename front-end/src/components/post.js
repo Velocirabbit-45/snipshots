@@ -15,7 +15,6 @@ const Post = ({ toOverview }) => {
     string.split(',').map((tag) => tag.trim().toLowerCase());
 
   function postToDatabase() {
-    console.log('post: ', postData);
     const { title, tags, code, description } = postData;
     const postBody = {
       title: title,
@@ -23,7 +22,6 @@ const Post = ({ toOverview }) => {
       code: code,
       description: description,
     };
-    console.log('post data: ', postData);
 
     fetch('/', {
       method: 'POST',
@@ -31,8 +29,8 @@ const Post = ({ toOverview }) => {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((response) => response.json())
+      .then(alert('Snippet saved to database!'))
       .then((data) => {
-        console.log(data);
         //resetting state using setter function
         setPostData({
           title: '',
@@ -40,7 +38,6 @@ const Post = ({ toOverview }) => {
           code: '',
           description: '',
         });
-        alert('Snippet has been saved!');
       })
       .catch((error) => {
         console.log(error);
@@ -49,7 +46,7 @@ const Post = ({ toOverview }) => {
 
   //creating function to handle the setpost event in jsx code below
   const handlePostChange = (event) => {
-    console.log('target: ', event.target);
+    //console.log('target: ', event.target);
     const { name, value } = event.target;
     //using setter function to assign the state
     setPostData({ ...postData, [name]: value });
