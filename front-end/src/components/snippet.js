@@ -9,7 +9,7 @@ const Snippet = ({ toOverview }) => {
   const dispatch = useDispatch();
   const snippet = useSelector(selectSnippet);
 
-  //CM: refactored code below to avoid unnecessary usage of usestate
+  //refactored code below to avoid unnecessary usage of usestate
   //declare a function pullfullsnippet that will grab the snippet based on title
   const pullFullSnippet = async () => {
     try {
@@ -22,7 +22,7 @@ const Snippet = ({ toOverview }) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data); // CM: used to diagnose the continual refresh of snippet problem in useeffect
+        console.log(data); // used to diagnose the continual refresh of snippet problem in useeffect
         dispatch(setSnippet(data)); // set snippet in Redux store
       } else {
         console.error('Error fetching snippet data:', response.status);
@@ -38,7 +38,7 @@ const Snippet = ({ toOverview }) => {
       pullFullSnippet();
     }
   }, [dispatch]);
-  //CM: removed snippet as a dependency of useeffect to ensure that the useeffect is only triggered once
+  //removed snippet as a dependency of useeffect to ensure that the useeffect is only triggered once
 
   // until the full snippet has loaded, display a loading message
   if (!snippet) {
@@ -153,6 +153,7 @@ const Snippet = ({ toOverview }) => {
           Update Description
         </button>
       </div>
+      <div></div>
     </div>
   );
 };

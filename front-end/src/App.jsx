@@ -8,9 +8,10 @@ class App extends Component {
     return (
       <div className="App">
         <div id="header">
-          <h1> Snipshots </h1>
-          <button>Switch Mode</button>
-          <p></p>
+          <div>
+            <button className="themes">Switch Mode</button>
+          </div>
+          <h2 id="snipshots-header"> Snipshots </h2>
         </div>
         <Feed />
         <div id="footer">
