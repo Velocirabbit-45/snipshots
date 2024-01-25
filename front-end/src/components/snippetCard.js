@@ -1,22 +1,5 @@
 import React, { Component } from 'react';
 
-//  /*onClick needs to change to open snippet editor with curr txt still in it*/}
-//       {/*<div id="footer" className="snippetCardButtons">
-//         {/* <button onClick= className='edit'>Edit</button>
-//         <button
-//           className="updateSnipMainText"
-//           onClick={updateSnippetDescription}
-//         >
-//           Update Description
-//         </button>
-//         <button className="updateSnippetTitle" onClick={updateSnippetTitle}>
-//           Update Title
-//         </button>
-//         <button className="deleteSnippet" onClick={deleteSnippet}>
-//           Delete
-//         </button>
-//       </div> */
-
 const SnippetCard = ({ snippet, displaySnippet }) => {
   const { title, tags } = snippet;
 

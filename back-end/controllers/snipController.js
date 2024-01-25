@@ -37,8 +37,10 @@ controller.createSnip = async (req, res, next) => {
       description: description,
     });
     res.locals.newSnip = newSnip;
+    console.log('Snippet Created: ', newSnip);
     return next();
   } catch (err) {
+    console.log('Error in createSnip: ', err);
     return next({
       log: `controller.createSnip error: ${err}`,
       message: { err: 'Error occured in Controllor createSnip middleware.' },

@@ -20,6 +20,7 @@ router.get('/tag', snipsController.getTag, (req, res) => {
 
 //router to CREATE a NEW snippet
 router.post('/', snipsController.createSnip, (req, res) => {
+  console.log('Server Response: ', res.locals.newSnip);
   return res.status(201).json(res.locals.newSnip);
 });
 
